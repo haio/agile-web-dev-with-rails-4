@@ -1,4 +1,8 @@
 Depot::Application.routes.draw do
+  resources :line_items
+
+  resources :carts
+
   get "store/index"
 
   resources :products
@@ -60,5 +64,5 @@ Depot::Application.routes.draw do
   # Note: This route will make all actions in every controller accessible via GET requests.
   # match ':controller(/:action(/:id))(.:format)'
 
-  root :to => 'store#index', as => 'store'
+  root :to => 'store#index', :as => 'store'
 end
