@@ -2,6 +2,8 @@ class Product < ActiveRecord::Base
   attr_accessible :description, :image_url, :price, :title
 
   default_scope :order => 'title'
+  has_many :line_items
+  before_destroy :ensure_not_referrenced_by_any_line_item
 	
 	validates :title, :description, :image_url, :presence => true
 	validates :price, :numericality =>{:greater_than_or_equal_to => 0.01}
@@ -10,4 +12,15 @@ class Product < ActiveRecord::Base
 		:with => %r{\.(gif|jpg|png)$}i,
 		:massage => 'must be a url for GIF, JPG, PNG iamge'
 	}
+
+	private
+		def ensure_not_referrenced_by_any_line_item
+			if line_items.empty?
+				return true
+			else
+				errors.add(:base, 'Line Item Present')
+				return false
+			end
+			
+		end
 end
