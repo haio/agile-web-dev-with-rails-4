@@ -14,7 +14,6 @@ class ProductsController < ApplicationController
   # GET /products/1.json
   def show
     @product = Product.find(params[:id])
-
     respond_to do |format|
       format.html # show.html.erb
       format.json { render json: @product }
@@ -25,7 +24,6 @@ class ProductsController < ApplicationController
   # GET /products/new.json
   def new
     @product = Product.new
-
     respond_to do |format|
       format.html # new.html.erb
       format.json { render json: @product }
