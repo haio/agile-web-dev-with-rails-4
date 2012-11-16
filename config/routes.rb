@@ -15,6 +15,10 @@ Depot::Application.routes.draw do
 
   resources :carts
 
+  resources :blogs
+
+  get "blog/list"
+
   get "store/index"
 
   resources :products do

@@ -18,7 +18,7 @@
 <!-- START_HIGHLIGHT -->
       <% if @cart %>
         <%= hidden_div_if(@cart.line_items.empty?, :id => 'cart') do %>
-          <%= render @cart %>
+          <%= render @cart%>
         <% end %>
       <% end %>
 <!-- END_HIGHLIGHT -->
@@ -27,6 +27,7 @@
         <li><a href="http://www..../faq">Questions</a></li>
         <li><a href="http://www..../news">News</a></li>
         <li><a href="http://www..../contact">Contact</a></li>
+        <li><%= mail_to("hello@ruby.com", "E-mail", encode: "javascript")%></li>
       </ul>
 
       <% if session[:user_id] %>
